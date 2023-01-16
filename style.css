@@ -11,11 +11,12 @@
   
   ul {
     list-style: none;
+    color:#4cbb17 ;
   }
   
   ul li {
     padding: 5px;
-    background: #f4f4f4;
+    background: #ffffff;
     margin: 5px 0;
   }
   

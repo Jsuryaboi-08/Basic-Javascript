@@ -241,4 +241,90 @@ class Person3 {
     }
 console.log(Person1)
 
+
 // DOM
+
+// selectors
+// single element
+console.log(window);
+// window is the mother of the objects
+// it is the highest level of object
+console.log(document.getElementById('my-form'));
+// we can even asssign to variable
+console.log(document.querySelector('.container'));
+// here this method being a single element selector it will select only the first h1
+console.log(document.querySelector('h1'));
+
+//Multiple elemt selector
+console.log(document.querySelectorAll(`.item`));
+//older method but is used for selecting the objects
+console.log(document.getElementsByClassName('item'));
+console.log(document.getElementsByTagName('li'));
+//looping through
+
+const items = document.querySelectorAll(`.item`);
+items.forEach((item) => console.log(item));
+// here it loops through and prints the list fully
+
+// manipulating the dom
+const ul = document.querySelector('.items');
+//ul.remove();
+//ul.lastElementChild.remove();
+ul.firstElementChild.textContent = 'Hello';
+ul.children[1].innerText = 'Jsuryaboi_08'
+ul.lastElementChild.innerHTML='<h1>Sup</h1>'
+
+// const btn = document.querySelector('.btn');
+// btn.style.background = 'red';
+// // event listener basically check if the event is done and executes a function
+// btn.addEventListener('click',(e) => {
+//    e.preventDefault();//this line of code prevents the default action and makes the console log stay permanently if we click
+//     // wihtout this the console logging hgappens once and only when the button is clicked
+//     // the log basically flshes for a split second before dissapperaing in the console log.
+//     // console.log('click');
+//     // console.log(e);// this shows the full event object
+//     // // target would give the actual element
+//     // console.log(e.target.id)
+
+
+//     document.querySelector('#my-form').style.background='#ccc';
+//     document.querySelector('body').classList.add('bg-dark');
+//     // these two lines are just for making the page interactive
+//     // WE CAN DO DYNAMIC CSS STYLKING THROUGH JAVASCRIPT BUT NOT RECOMMENDED TO DO SO AS IT WOULD BECOME HARD.
+//     document.querySelector('.items')
+//     .lastElementChild.innerHTML = '<h1>Hello</h1>';
+//     // whole functionality i have used here works only when the submit button is clicked.
+//     //  the whole function basically runs if the click is done 
+//     //  we can give a mouseout event
+
+// });
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit',onSubmit);
+function onSubmit(e){
+    e.preventDefault();
+   // console.log(nameInput.value);// if we just give just nameInput it just gives us the element
+    // but for getting the value we need to add.value so that in the logs we get the actual name entered
+    //now i design it so that it accepts the form only when both the sections are filled
+    if(nameInput.value===''|| emailInput===''){
+        //alert('please enter the feilds');
+        msg.classList.add('error');
+        msg.innerHTML = 'Please enter all feilds';
+        setTimeout(()=>msg.remove(),3000)// 3000 ms
+    }else{
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${nameInput.value}:${emailInput.value}`));
+        userList.appendChild(li);
+        // Clear Feilds
+        nameInput.value='';
+        emailInput.value ='';
+
+    }
+}
+
+
