@@ -240,3 +240,5 @@ class Person3 {
     }
     }
 console.log(Person1)
+
+// DOM
